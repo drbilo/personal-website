@@ -38,4 +38,6 @@ src/
 
 ### Deployment
 
-Configured for both Vercel (vercel.json) and GitHub Pages (.github/workflows/deploy.yml)
+- **Production:** Deployed via Vercel (vercel.json)
+- **Repository:** https://github.com/drbilo/personal-website
+- GitHub Pages workflow also available (.github/workflows/deploy.yml)
