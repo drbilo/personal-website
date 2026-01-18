@@ -1,0 +1,278 @@
+---
+const socialLinks = [
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/christopherjcbennett/',
+    icon: 'linkedin'
+  },
+  {
+    name: 'Email',
+    url: 'mailto:hey@cbennett.me',
+    icon: 'email'
+  },
+  {
+    name: 'GitHub',
+    url: 'https://github.com/drbilo',
+    icon: 'github'
+  },
+  {
+    name: 'Telegram',
+    url: 'https://t.me/kickingupastorm',
+    icon: 'telegram'
+  }
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer id="contact" class="footer">
+  <div class="footer-background"></div>
+  <div class="container">
+    <div class="footer-content fade-in">
+      <div class="footer-cta">
+        <h2>Let's Chat</h2>
+        <p>
+          Whether you want to talk product, swap music recommendations,
+          or debate the best Oasis album, I'm always up for a conversation.
+        </p>
+        <a href="mailto:hey@cbennett.me" class="btn btn-accent">
+          Get In Touch
+        </a>
+      </div>
+
+      <div class="footer-links">
+        <h3>Find Me Online</h3>
+        <ul class="social-links">
+          {socialLinks.map(link => (
+            <li>
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link sketchy-link">
+                <span class="social-icon" data-icon={link.icon}></span>
+                <span>{link.name}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-bottom-left">
+        <p>&copy; {currentYear} Chris. All rights reserved.</p>
+        <!-- Sleeping cat illustration -->
+        <div class="footer-cat" aria-hidden="true">
+          <svg class="doodle-cat-sleep" viewBox="0 0 60 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Body curl -->
+            <path d="M10 25 Q5 15 15 10 Q30 5 45 12 Q55 18 50 28 Q40 32 25 30 Q12 28 10 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+            <!-- Head -->
+            <circle cx="18" cy="18" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+            <!-- Ears -->
+            <path d="M12 12 L10 5 L16 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <path d="M24 12 L26 5 L20 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Closed eyes (sleeping) -->
+            <path d="M14 17 Q16 19 18 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M18 17 Q20 19 22 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <!-- Tail -->
+            <path class="cat-tail" d="M48 25 Q55 20 52 30 Q50 35 45 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+      </div>
+      <p class="made-with">Built with care and a good playlist.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    color: var(--color-bg);
+    padding: var(--space-3xl) 0 var(--space-xl);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-background {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 20% 80%, rgba(233, 69, 96, 0.15) 0%, transparent 50%),
+      radial-gradient(circle at 80% 20%, rgba(196, 163, 90, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+
+  .footer .container {
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+
+  .footer-cta h2 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-bg);
+    margin-bottom: var(--space-lg);
+    letter-spacing: -0.02em;
+  }
+
+  .footer-cta p {
+    color: var(--color-text-light);
+    font-size: 1.15rem;
+    max-width: 500px;
+    margin-bottom: var(--space-xl);
+    line-height: 1.7;
+  }
+
+  .footer-cta .btn {
+    font-size: 1.1rem;
+    padding: 1.125rem 2.25rem;
+  }
+
+  .footer-links h3 {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--color-bg);
+    margin-bottom: var(--space-lg);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .social-links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-md);
+    color: var(--color-text-light);
+    font-size: 1rem;
+    font-weight: var(--font-weight-medium);
+    padding: var(--space-sm) 0;
+    transition: all var(--transition-fast);
+  }
+
+  .social-link:hover {
+    color: var(--color-bg);
+    transform: translateX(6px);
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-md);
+    font-size: 0.85rem;
+    transition: all var(--transition-fast);
+  }
+
+  .social-link:hover .social-icon {
+    background-color: var(--color-accent);
+  }
+
+  .social-icon[data-icon="linkedin"]::before {
+    content: 'in';
+    font-weight: 700;
+  }
+
+  .social-icon[data-icon="email"]::before {
+    content: '@';
+    font-weight: 700;
+  }
+
+  .social-icon[data-icon="github"]::before {
+    content: '< >';
+    font-weight: 600;
+    font-size: 0.75rem;
+  }
+
+  .social-icon[data-icon="telegram"]::before {
+    content: '✈';
+    font-weight: 400;
+  }
+
+  .footer-bottom {
+    padding-top: var(--space-xl);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .footer-bottom-left {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  .footer-bottom p {
+    font-size: 0.9rem;
+    color: var(--color-text-light);
+    margin: 0;
+  }
+
+  .footer-cat {
+    width: 45px;
+    height: 28px;
+    color: var(--color-text-light);
+    opacity: 0.7;
+    transition: opacity var(--transition-fast);
+  }
+
+  .footer-cat:hover {
+    opacity: 1;
+  }
+
+  .footer-cat .cat-tail {
+    transform-origin: 48px 25px;
+    animation: tailTwitch 15s ease-in-out infinite;
+  }
+
+  @keyframes tailTwitch {
+    0%, 85%, 100% { transform: rotate(0deg); }
+    88% { transform: rotate(8deg); }
+    91% { transform: rotate(-5deg); }
+    94% { transform: rotate(3deg); }
+    97% { transform: rotate(0deg); }
+  }
+
+  .made-with {
+    font-style: italic;
+    opacity: 0.7;
+  }
+
+  /* Respect reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .footer-cat .cat-tail {
+      animation: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: var(--space-xl);
+    }
+
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .footer-bottom-left {
+      flex-direction: column;
+    }
+  }
+</style>

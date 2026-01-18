@@ -1,0 +1,225 @@
+---
+// Doodles.astro - Hand-drawn SVG illustrations for personality
+// Each component is exported for use across the site
+---
+
+<!-- Cat peeking behind photo -->
+<template id="doodle-cat-peek">
+  <svg class="doodle-cat-peek" viewBox="0 0 80 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Cat ears -->
+    <path d="M15 25 L25 5 L32 22" stroke="var(--color-pencil)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="var(--color-bg)"/>
+    <path d="M65 25 L55 5 L48 22" stroke="var(--color-pencil)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="var(--color-bg)"/>
+    <!-- Inner ears -->
+    <path d="M20 20 L25 10 L28 18" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M60 20 L55 10 L52 18" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <!-- Head top curve -->
+    <path d="M15 28 Q40 20 65 28" stroke="var(--color-pencil)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <!-- Eyes (hidden by default, shown on hover) -->
+    <g class="cat-eyes">
+      <ellipse cx="30" cy="38" rx="6" ry="7" fill="var(--color-pencil)"/>
+      <ellipse cx="50" cy="38" rx="6" ry="7" fill="var(--color-pencil)"/>
+      <circle cx="31" cy="36" r="2" fill="var(--color-bg)"/>
+      <circle cx="51" cy="36" r="2" fill="var(--color-bg)"/>
+    </g>
+  </svg>
+</template>
+
+<!-- Curled up sleeping cat for footer -->
+<template id="doodle-cat-sleep">
+  <svg class="doodle-cat-sleep" viewBox="0 0 60 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Body curl -->
+    <path d="M10 25 Q5 15 15 10 Q30 5 45 12 Q55 18 50 28 Q40 32 25 30 Q12 28 10 25" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <!-- Head -->
+    <circle cx="18" cy="18" r="8" stroke="currentColor" stroke-width="2" fill="none"/>
+    <!-- Ears -->
+    <path d="M12 12 L10 5 L16 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M24 12 L26 5 L20 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Closed eyes (sleeping) -->
+    <path d="M14 17 Q16 19 18 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <path d="M18 17 Q20 19 22 17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    <!-- Tail -->
+    <path class="cat-tail" d="M48 25 Q55 20 52 30 Q50 35 45 32" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </svg>
+</template>
+
+<!-- Floating music notes -->
+<template id="doodle-music-notes">
+  <svg class="doodle-music-notes" viewBox="0 0 50 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <!-- Note 1 -->
+    <g class="music-note note-1">
+      <ellipse cx="12" cy="45" rx="6" ry="5" fill="var(--color-pencil)" transform="rotate(-20 12 45)"/>
+      <path d="M17 43 L17 15 Q22 10 27 15" stroke="var(--color-pencil)" stroke-width="2" stroke-linecap="round" fill="none"/>
+    </g>
+    <!-- Note 2 -->
+    <g class="music-note note-2">
+      <ellipse cx="35" cy="35" rx="5" ry="4" fill="var(--color-accent)" transform="rotate(-15 35 35)"/>
+      <path d="M39 33 L39 12" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"/>
+      <path d="M39 12 L45 14 L45 18" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </g>
+  </svg>
+</template>
+
+<!-- Single music note (smaller, for scattered use) -->
+<template id="doodle-note-single">
+  <svg class="doodle-note-single" viewBox="0 0 20 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="6" cy="24" rx="5" ry="4" fill="currentColor" transform="rotate(-20 6 24)"/>
+    <path d="M10 22 L10 5 Q14 2 18 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </svg>
+</template>
+
+<!-- Wavy underline for section headers -->
+<template id="doodle-wavy-underline">
+  <svg class="doodle-wavy-underline" viewBox="0 0 120 12" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+    <path d="M2 6 Q15 2 30 6 T60 6 T90 6 T118 6" stroke="var(--color-accent)" stroke-width="3" stroke-linecap="round" fill="none"/>
+  </svg>
+</template>
+
+<!-- Hand-drawn arrow for scroll indicator -->
+<template id="doodle-arrow-down">
+  <svg class="doodle-arrow-down" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2 L12 32" stroke="var(--color-pencil)" stroke-width="2" stroke-linecap="round"/>
+    <path d="M5 25 L12 35 L19 25" stroke="var(--color-pencil)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+</template>
+
+<!-- Small star for achievement cards -->
+<template id="doodle-star">
+  <svg class="doodle-star" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2 L14 9 L21 9 L16 14 L18 21 L12 17 L6 21 L8 14 L3 9 L10 9 Z"
+          stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  </svg>
+</template>
+
+<!-- Guitar pick bullet point -->
+<template id="doodle-pick">
+  <svg class="doodle-pick" viewBox="0 0 16 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M8 2 Q14 4 14 10 Q14 16 8 18 Q2 16 2 10 Q2 4 8 2"
+          stroke="var(--color-accent)" stroke-width="2" fill="var(--color-accent-light)"/>
+  </svg>
+</template>
+
+<!-- Sketchy circle for timeline markers -->
+<template id="doodle-circle">
+  <svg class="doodle-circle" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2 Q20 3 22 12 Q21 20 12 22 Q4 21 2 12 Q3 4 12 2"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </svg>
+</template>
+
+<style is:global>
+  /* Base doodle styles */
+  .doodle-cat-peek,
+  .doodle-cat-sleep,
+  .doodle-music-notes,
+  .doodle-note-single,
+  .doodle-arrow-down,
+  .doodle-star,
+  .doodle-pick,
+  .doodle-circle {
+    display: inline-block;
+    pointer-events: none;
+  }
+
+  /* Cat eyes hidden by default */
+  .doodle-cat-peek .cat-eyes {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+  }
+
+  /* Cat eye blink animation */
+  @keyframes catBlink {
+    0%, 90%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+  }
+
+  /* Music note float animation */
+  @keyframes floatNote {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(5deg); }
+  }
+
+  .music-note {
+    animation: floatNote 3s ease-in-out infinite;
+  }
+
+  .note-1 {
+    animation-delay: 0s;
+  }
+
+  .note-2 {
+    animation-delay: 1.5s;
+  }
+
+  /* Cat tail twitch animation */
+  @keyframes tailTwitch {
+    0%, 85%, 100% { transform: rotate(0deg); }
+    88% { transform: rotate(8deg); }
+    91% { transform: rotate(-5deg); }
+    94% { transform: rotate(3deg); }
+    97% { transform: rotate(0deg); }
+  }
+
+  .cat-tail {
+    transform-origin: 48px 25px;
+    animation: tailTwitch 15s ease-in-out infinite;
+  }
+
+  /* Wavy underline draw-in animation */
+  @keyframes drawLine {
+    from { stroke-dashoffset: 200; }
+    to { stroke-dashoffset: 0; }
+  }
+
+  .doodle-wavy-underline path {
+    stroke-dasharray: 200;
+    stroke-dashoffset: 200;
+  }
+
+  .doodle-wavy-underline.animate path {
+    animation: drawLine 0.6s ease forwards;
+  }
+
+  /* Star twinkle animation */
+  @keyframes twinkle {
+    0%, 100% { opacity: 0; transform: scale(0.8) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1) rotate(10deg); }
+  }
+
+  .doodle-star {
+    opacity: 0;
+  }
+
+  .doodle-star.visible {
+    animation: twinkle 0.4s ease forwards;
+  }
+
+  /* Arrow bounce animation */
+  @keyframes arrowBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  .doodle-arrow-down {
+    animation: arrowBounce 2s ease-in-out infinite;
+  }
+
+  /* Respect reduced motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    .music-note,
+    .cat-tail,
+    .doodle-arrow-down,
+    .doodle-star.visible,
+    .doodle-wavy-underline.animate path {
+      animation: none;
+    }
+
+    .doodle-wavy-underline.animate path {
+      stroke-dashoffset: 0;
+    }
+
+    .doodle-star.visible {
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>

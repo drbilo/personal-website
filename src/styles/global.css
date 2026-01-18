@@ -1,0 +1,403 @@
+/* Design Tokens - Warm, creative palette */
+:root {
+  /* Colors - Punched up for authority */
+  --color-primary: #1a1a2e;
+  --color-secondary: #16213e;
+  --color-accent: #e94560;
+  --color-accent-hover: #d63851;
+  --color-accent-light: rgba(233, 69, 96, 0.12);
+
+  /* Warm tones */
+  --color-cream: #faf3e0;
+  --color-warm-gray: #b4a5a5;
+  --color-muted-gold: #c4a35a;
+  --color-dusty-rose: #d4a5a5;
+
+  /* Sketch/doodle color */
+  --color-pencil: #4a4a4a;
+
+  /* Neutrals - Warmer paper tone */
+  --color-bg: #fffef8;
+  --color-bg-alt: #f5f0eb;
+  --color-text: #1a1a1a;
+  --color-text-muted: #4a5568;
+  --color-text-light: #a0aec0;
+
+  /* Typography - Fraunces for display, Inter for body */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  /* Spacing - Slightly expanded */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 6rem;
+  --space-3xl: 8rem;
+  --space-4xl: 10rem;
+
+  /* Layout */
+  --max-width: 1200px;
+  --container-padding: 1.5rem;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-base: 300ms ease;
+  --transition-slow: 500ms ease;
+
+  /* Shadows - More depth */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --shadow-accent: 0 4px 20px rgba(233, 69, 96, 0.25);
+
+  /* Border radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+}
+
+/* Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Subtle dot grid texture */
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.015) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--color-primary);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: var(--font-weight-black);
+}
+
+h2 {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+}
+
+h3 {
+  font-size: clamp(1.25rem, 2vw, 1.5rem);
+}
+
+p {
+  font-family: var(--font-primary);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utility Classes */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+.section {
+  padding: var(--space-3xl) 0;
+  position: relative;
+}
+
+.section-alt {
+  background-color: var(--color-bg-alt);
+  background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.02) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* Section title styling - Hand-drawn wavy underline */
+.section-title {
+  position: relative;
+  display: inline-block;
+  margin-bottom: var(--space-xl);
+}
+
+.section-title .wavy-underline {
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 100%;
+  max-width: 120px;
+  height: 12px;
+}
+
+/* Scroll animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity var(--transition-slow), transform var(--transition-slow);
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Button styles - With micro-interaction */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 1rem 2rem;
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-bg);
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-bg);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 4px;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-hover);
+  box-shadow: var(--shadow-accent);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1rem;
+  }
+
+  .section {
+    padding: var(--space-2xl) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Sketchy photo border */
+.sketchy-border {
+  position: relative;
+}
+
+.sketchy-border::before,
+.sketchy-border::after {
+  content: '';
+  position: absolute;
+  border: 3px solid var(--color-pencil);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.sketchy-border::before {
+  inset: -8px;
+  transform: rotate(2deg);
+}
+
+.sketchy-border::after {
+  inset: -14px;
+  transform: rotate(-1deg);
+  border-style: dashed;
+  opacity: 0.5;
+}
+
+/* Sketchy link underline */
+.sketchy-link {
+  position: relative;
+  display: inline-block;
+}
+
+.sketchy-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 6'%3E%3Cpath d='M2 3 Q15 1 30 3 T60 3 T90 3 T118 3' stroke='%23e94560' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") repeat-x;
+  background-size: 60px 6px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.sketchy-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Sketchy timeline marker */
+.timeline-marker-sketchy {
+  background: none;
+  border: none;
+}
+
+.timeline-marker-sketchy svg {
+  width: 24px;
+  height: 24px;
+  color: var(--color-warm-gray);
+  transition: color var(--transition-base), transform var(--transition-base);
+}
+
+.timeline-item.current .timeline-marker-sketchy svg {
+  color: var(--color-accent);
+}
+
+.timeline-item:hover .timeline-marker-sketchy svg {
+  color: var(--color-accent);
+  transform: scale(1.2);
+}
+
+/* Achievement card star on hover */
+.achievement-card {
+  position: relative;
+}
+
+.achievement-card .hover-star {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 24px;
+  height: 24px;
+  opacity: 0;
+  transform: scale(0.8) rotate(0deg);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.achievement-card:hover .hover-star {
+  opacity: 1;
+  transform: scale(1) rotate(15deg);
+}
+
+/* Guitar pick bullets */
+.pick-bullet {
+  list-style: none;
+  padding-left: 0;
+}
+
+.pick-bullet li {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.pick-bullet li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.35em;
+  width: 14px;
+  height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 20'%3E%3Cpath d='M8 2 Q14 4 14 10 Q14 16 8 18 Q2 16 2 10 Q2 4 8 2' stroke='%23e94560' stroke-width='2' fill='rgba(233,69,96,0.12)'/%3E%3C/svg%3E") no-repeat center;
+  background-size: contain;
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .sketchy-link::after {
+    transition: none;
+    transform: scaleX(1);
+    opacity: 0;
+  }
+
+  .sketchy-link:hover::after {
+    opacity: 1;
+  }
+
+  .achievement-card .hover-star {
+    transition: opacity 0.1s ease;
+    transform: scale(1) rotate(15deg);
+  }
+}
