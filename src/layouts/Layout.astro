@@ -13,11 +13,14 @@ const { title, description = "Senior Product Manager at ScreenCloud" } = Astro.p
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+
+    <!-- Native View Transitions API -->
+    <meta name="view-transition" content="same-origin" />
 
     <!-- Preload fonts for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -27,28 +30,40 @@ const { title, description = "Senior Product Manager at ScreenCloud" } = Astro.p
     <Analytics />
   </head>
   <body>
-    <slot />
+    <!-- Skip link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
-    <!-- Intersection Observer for scroll animations -->
+    <main id="main-content" tabindex="-1">
+      <slot />
+    </main>
+
+    <!-- Intersection Observer for scroll animations with cleanup -->
     <script>
-      const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-      };
+      let isPaused = false;
 
       const observer = new IntersectionObserver((entries) => {
+        if (isPaused) return;
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
             observer.unobserve(entry.target);
           }
         });
-      }, observerOptions);
+      }, { threshold: 0.1 });
 
-      document.addEventListener('DOMContentLoaded', () => {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(el => observer.observe(el));
+      function observeFadeElements() {
+        document.querySelectorAll('.fade-in:not(.visible)').forEach(el => {
+          observer.observe(el);
+        });
+      }
+
+      document.addEventListener('DOMContentLoaded', observeFadeElements);
+
+      // Handle view transitions
+      document.addEventListener('astro:before-swap', () => { isPaused = true; });
+      document.addEventListener('astro:after-swap', () => {
+        isPaused = false;
+        observeFadeElements();
       });
     </script>
   </body>

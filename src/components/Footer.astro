@@ -50,8 +50,14 @@ const currentYear = new Date().getFullYear();
         <ul class="social-links">
           {socialLinks.map(link => (
             <li>
-              <a href={link.url} target="_blank" rel="noopener noreferrer" class="social-link sketchy-link">
-                <span class="social-icon" data-icon={link.icon}></span>
+              <a
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="social-link sketchy-link"
+                aria-label={`${link.name} (opens in new tab)`}
+              >
+                <span class="social-icon" data-icon={link.icon} aria-hidden="true"></span>
                 <span>{link.name}</span>
               </a>
             </li>
