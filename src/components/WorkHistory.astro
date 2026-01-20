@@ -10,7 +10,17 @@ const experiences = [
       'Manage supplier relationships in China, overseeing stock levels and future hardware development',
       'Champion stability as a core product principle across all hardware offerings'
     ],
-    current: true
+    current: true,
+    caseStudy: {
+      challenge: 'Managing a complex hardware ecosystem across 100K+ devices with varying capabilities, while coordinating with overseas suppliers and maintaining enterprise-grade reliability.',
+      approach: 'Established a stability-first product philosophy, implemented rigorous testing protocols, and built strong supplier relationships through regular communication and on-site visits.',
+      results: [
+        { metric: 'Device Uptime', description: 'Maintained 99.9% fleet reliability across all hardware platforms' },
+        { metric: 'Supply Chain', description: 'Reduced lead times by building redundant supplier relationships' },
+        { metric: 'Team Alignment', description: 'Unified three hardware teams under consistent development cycles' }
+      ],
+      learnings: 'Hardware product management requires balancing long development cycles with customer urgency. Building trust with suppliers is as important as building trust with customers.'
+    }
   },
   {
     company: 'ScreenCloud',
@@ -22,7 +32,17 @@ const experiences = [
       'Collaborated with product managers to align opportunities and solutions with business objectives',
       'Worked closely with engineering and tech leads to ensure efficient product delivery'
     ],
-    current: false
+    current: false,
+    caseStudy: {
+      challenge: 'The CMS had grown organically without a clear discovery process, leading to feature bloat and misaligned priorities with actual customer needs.',
+      approach: 'Introduced continuous discovery practices, including weekly customer interviews, opportunity mapping, and outcome-based roadmapping to align the team around customer problems rather than solutions.',
+      results: [
+        { metric: 'Discovery Cadence', description: 'Established weekly customer touchpoints across the product team' },
+        { metric: 'Feature Adoption', description: 'Increased new feature adoption rates through better problem validation' },
+        { metric: 'Team Efficiency', description: 'Reduced time-to-value by focusing on highest-impact opportunities' }
+      ],
+      learnings: 'Changing team methodologies requires patience and leading by example. Show the value of discovery through small wins before pushing for larger process changes.'
+    }
   },
   {
     company: 'ScreenCloud',
@@ -34,7 +54,17 @@ const experiences = [
       'Communicated daily with customers to find pain points and shape solutions',
       'Implemented data collection projects with Tableau and FullStory'
     ],
-    current: false
+    current: false,
+    caseStudy: {
+      challenge: 'Scaling from startup to growth stage required understanding which customer segments drove the most value and which product features enabled retention.',
+      approach: 'Built a data-driven approach combining quantitative analytics (Tableau, FullStory) with qualitative research (daily customer calls) to identify patterns in successful customers.',
+      results: [
+        { metric: '3x ARR Growth', description: 'Contributed to scaling from $3.5M to $12M ARR' },
+        { metric: 'Data Infrastructure', description: 'Built analytics foundation that informed product decisions' },
+        { metric: 'Customer Insights', description: 'Established direct customer feedback loops that shaped roadmap' }
+      ],
+      learnings: 'The best product decisions come from combining quantitative data with qualitative understanding. Numbers tell you what is happening; conversations tell you why.'
+    }
   },
   {
     company: 'Assumption College Primary',
@@ -46,7 +76,17 @@ const experiences = [
       'Started a Computer Club teaching Scratch programming and creative coding',
       'Introduced robotics building with iPad programming for STEM classes'
     ],
-    current: false
+    current: false,
+    caseStudy: {
+      challenge: 'The existing computer curriculum focused on basic office software, leaving students unprepared for a technology-driven future and unengaged in classes.',
+      approach: 'Redesigned the entire curriculum to introduce computational thinking, visual programming with Scratch, and hands-on robotics, making learning tangible and exciting.',
+      results: [
+        { metric: 'Curriculum Overhaul', description: 'Created comprehensive K-6 computer science curriculum from scratch' },
+        { metric: 'Student Engagement', description: 'Computer Club became one of the most popular extracurricular activities' },
+        { metric: 'STEM Foundation', description: 'Introduced robotics and programming to hundreds of students' }
+      ],
+      learnings: 'Teaching is product management for education. Understanding your users (students), iterating on delivery, and measuring outcomes are universal skills.'
+    }
   }
 ];
 ---
@@ -83,6 +123,37 @@ const experiences = [
                 <li>{highlight}</li>
               ))}
             </ul>
+
+            {exp.caseStudy && (
+              <details class="case-study">
+                <summary class="case-study__trigger">
+                  <span>View Case Study</span>
+                  <svg class="case-study__icon" aria-hidden="true" viewBox="0 0 24 24">
+                    <path fill="currentColor" d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                  </svg>
+                </summary>
+
+                <div class="case-study__content">
+                  <div class="case-study__inner">
+                    <h4>The Challenge</h4>
+                    <p>{exp.caseStudy.challenge}</p>
+
+                    <h4>My Approach</h4>
+                    <p>{exp.caseStudy.approach}</p>
+
+                    <h4>Impact & Results</h4>
+                    <ul class="impact-metrics">
+                      {exp.caseStudy.results.map(r => (
+                        <li><strong>{r.metric}:</strong> {r.description}</li>
+                      ))}
+                    </ul>
+
+                    <h4>Key Learnings</h4>
+                    <p>{exp.caseStudy.learnings}</p>
+                  </div>
+                </div>
+              </details>
+            )}
           </div>
         </article>
       ))}

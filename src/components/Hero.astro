@@ -1,5 +1,6 @@
 ---
-
+import { Picture } from 'astro:assets';
+import heroPhoto from '../assets/chris.png';
 ---
 
 <section class="hero">
@@ -19,13 +20,22 @@
       </div>
     </div>
     <div class="hero-image">
-      <img src="/chris.png" alt="Chris Bennett" class="hero-photo sketchy-border" />
+      <Picture
+        src={heroPhoto}
+        formats={['avif', 'webp']}
+        widths={[200, 280, 380, 560, 760]}
+        sizes="(max-width: 480px) 200px, (max-width: 768px) 280px, 380px"
+        alt="Chris Bennett, Senior Product Manager"
+        class="hero-photo sketchy-border"
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
   </div>
-  <div class="scroll-indicator">
+  <div class="scroll-indicator" aria-hidden="true">
     <span>Scroll</span>
     <!-- Hand-drawn arrow -->
-    <svg class="doodle-arrow-down" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="doodle-arrow-down" viewBox="0 0 24 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <path d="M12 2 L12 32" stroke="var(--color-pencil)" stroke-width="2" stroke-linecap="round"/>
       <path d="M5 25 L12 35 L19 25" stroke="var(--color-pencil)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
     </svg>
@@ -34,12 +44,21 @@
 
 <style>
   .hero {
-    min-height: 100vh;
+    min-height: 100vh; /* Fallback */
+    min-height: 100dvh;
     display: flex;
     align-items: center;
     position: relative;
     padding: clamp(6rem, 12vh, 8rem) 0 4rem;
+    padding-top: env(safe-area-inset-top, clamp(6rem, 12vh, 8rem));
     overflow: hidden;
+  }
+
+  /* Fallback for older browsers */
+  @supports not (min-height: 100dvh) {
+    .hero {
+      min-height: -webkit-fill-available;
+    }
   }
 
   .hero-background {
