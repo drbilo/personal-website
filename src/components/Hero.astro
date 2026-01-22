@@ -45,13 +45,13 @@ import heroPhoto from '../assets/chris.png';
 <style>
   .hero {
     min-height: 100vh; /* Fallback */
-    min-height: 100dvh;
+    min-height: 100svh; /* Small viewport - most consistent on Mobile Safari */
     display: flex;
     align-items: center;
     position: relative;
     padding: clamp(6rem, 12vh, 8rem) 0 4rem;
-    padding-top: env(safe-area-inset-top, clamp(6rem, 12vh, 8rem));
-    overflow: hidden;
+    padding-top: calc(clamp(6rem, 12vh, 8rem) + env(safe-area-inset-top, 0px));
+    overflow: visible; /* Allow sketchy border to extend outside */
   }
 
   /* Fallback for older browsers */
@@ -128,6 +128,13 @@ import heroPhoto from '../assets/chris.png';
     align-items: center;
     animation: fadeInUp 0.8s ease-out 0.2s both;
     position: relative;
+    overflow: visible;
+  }
+
+  /* Ensure Picture component wrapper doesn't clip */
+  .hero-image picture {
+    overflow: visible;
+    display: block;
   }
 
   .hero-photo {
@@ -135,8 +142,10 @@ import heroPhoto from '../assets/chris.png';
     height: clamp(280px, 25vw, 380px);
     border-radius: 50%;
     object-fit: cover;
+    object-position: center top; /* Ensure face is visible, not cropped */
     position: relative;
     z-index: 1;
+    overflow: visible;
   }
 
   .scroll-indicator {
@@ -189,6 +198,12 @@ import heroPhoto from '../assets/chris.png';
   }
 
   @media (max-width: 1024px) {
+    .hero {
+      align-items: flex-start;
+      /* Nav is 72px + safe-area, so we need 72px + safe-area + buffer (20px) = 92px + safe-area */
+      padding-top: calc(92px + env(safe-area-inset-top, 0px));
+    }
+
     .hero-content {
       grid-template-columns: 1fr;
       text-align: center;
@@ -205,11 +220,18 @@ import heroPhoto from '../assets/chris.png';
 
     .hero-image {
       order: -1;
+      align-items: flex-start;
     }
 
     .hero-photo {
       width: 280px;
       height: 280px;
+    }
+
+    /* Disable sketchy border pseudo-elements on mobile - they cause clipping issues */
+    .hero-photo::before,
+    .hero-photo::after {
+      display: none !important;
     }
   }
 
