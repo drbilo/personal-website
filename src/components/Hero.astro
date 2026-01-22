@@ -51,7 +51,7 @@ import heroPhoto from '../assets/chris.png';
     position: relative;
     padding: clamp(6rem, 12vh, 8rem) 0 4rem;
     padding-top: calc(clamp(6rem, 12vh, 8rem) + env(safe-area-inset-top, 0px));
-    overflow: hidden;
+    overflow: visible; /* Allow sketchy border to extend outside */
   }
 
   /* Fallback for older browsers */
@@ -191,6 +191,8 @@ import heroPhoto from '../assets/chris.png';
   @media (max-width: 1024px) {
     .hero {
       align-items: flex-start;
+      /* Explicit padding for mobile: 72px nav + 20px border/breathing room */
+      padding-top: calc(92px + env(safe-area-inset-top, 0px));
     }
 
     .hero-content {
@@ -209,7 +211,7 @@ import heroPhoto from '../assets/chris.png';
 
     .hero-image {
       order: -1;
-      padding-top: 1rem; /* Space for sketchy border pseudo-elements */
+      padding-top: 1.25rem; /* Space for sketchy border pseudo-elements (14px + buffer) */
     }
 
     .hero-photo {
