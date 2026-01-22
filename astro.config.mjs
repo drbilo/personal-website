@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://example.com',
+  site: 'https://chrisbennett.online',
   output: 'static',
+  trailingSlash: 'never',
   build: {
     assets: 'assets'
   }
