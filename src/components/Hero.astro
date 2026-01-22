@@ -50,7 +50,7 @@ import heroPhoto from '../assets/chris.png';
     align-items: center;
     position: relative;
     padding: clamp(6rem, 12vh, 8rem) 0 4rem;
-    padding-top: env(safe-area-inset-top, clamp(6rem, 12vh, 8rem));
+    padding-top: calc(clamp(6rem, 12vh, 8rem) + env(safe-area-inset-top, 0px));
     overflow: hidden;
   }
 
