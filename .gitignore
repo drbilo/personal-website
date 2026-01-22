@@ -21,4 +21,10 @@ dist/
 Thumbs.db
 
 # Local settings
-.claude/settings.local.json
+.claude/*.local.*
+
+# Working documents
+plans/
+
+# Windows artifacts
+nul
