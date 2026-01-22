@@ -128,6 +128,13 @@ import heroPhoto from '../assets/chris.png';
     align-items: center;
     animation: fadeInUp 0.8s ease-out 0.2s both;
     position: relative;
+    overflow: visible;
+  }
+
+  /* Ensure Picture component wrapper doesn't clip */
+  .hero-image picture {
+    overflow: visible;
+    display: block;
   }
 
   .hero-photo {
@@ -135,8 +142,10 @@ import heroPhoto from '../assets/chris.png';
     height: clamp(280px, 25vw, 380px);
     border-radius: 50%;
     object-fit: cover;
+    object-position: center top; /* Ensure face is visible, not cropped */
     position: relative;
     z-index: 1;
+    overflow: visible;
   }
 
   .scroll-indicator {
