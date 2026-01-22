@@ -45,7 +45,7 @@ import heroPhoto from '../assets/chris.png';
 <style>
   .hero {
     min-height: 100vh; /* Fallback */
-    min-height: 100dvh;
+    min-height: 100svh; /* Small viewport - most consistent on Mobile Safari */
     display: flex;
     align-items: center;
     position: relative;
@@ -200,15 +200,8 @@ import heroPhoto from '../assets/chris.png';
   @media (max-width: 1024px) {
     .hero {
       align-items: flex-start;
-      /* Simple large padding - 72px nav + 80px buffer = 152px minimum */
-      padding-top: 160px;
-    }
-
-    /* For iPhones with notch/Dynamic Island, add safe area */
-    @supports (padding-top: env(safe-area-inset-top)) {
-      .hero {
-        padding-top: calc(160px + env(safe-area-inset-top, 0px));
-      }
+      /* Nav is 72px + safe-area, so we need 72px + safe-area + buffer (20px) = 92px + safe-area */
+      padding-top: calc(92px + env(safe-area-inset-top, 0px));
     }
 
     .hero-content {
